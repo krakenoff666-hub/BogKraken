@@ -1,0 +1,217 @@
+[2026-09-20 04:14:04] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"test2@test.com"}
+[2026-09-20 04:14:04] [PASO 1] Cart OK | DATA: {"cart_id":"0037a6f6-9f85-4ee9-89c9-93ae9672a884"}
+[2026-09-20 04:14:05] [PASO 2] Order intento 1 | DATA: {"code":200}
+[2026-09-20 04:14:05] [PASO 2] Order OK | DATA: {"url":"https://pay.dlocal.com/gmf-apm/payments-redirect/N-71d91174-7c4b-4d42-91d6-a8d2bff5a015"}
+[2026-09-20 04:14:06] [PASO 3] dLocal OK | DATA: {"fields":9}
+[2026-09-20 04:14:06] [PASO 4] Hash OK | DATA: {"hash":"79562aba0cf872d3bad177b7aaabff09"}
+[2026-09-20 04:14:07] [PASO 5] Confirm OK
+[2026-09-20 04:14:07] [PASO 6] Config OK | DATA: {"serial":112768524}
+[2026-09-20 04:14:08] [PASO 7] Metodo actualizado
+[2026-09-20 04:14:09] [PASO 8] Completar | DATA: {"code":200,"url":"https://gateway2.tucompra.com.co/tc/app/config/completarTransaccion?hash=79562aba0cf872d3bad177b7aaabff09","body":"{\"status\":200,\"payload\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTI3Njg1MjQiLCJhdXRob3JpdGllcyI6WyJUQy1JTlRFR1JBQ0lPTiJdLCJyZXNwb25zZSI6eyJzZXJpYWxUdWNvbXByYSI6MTEyNzY4NTI0LCJlc3RhZG8iOiJQRU5ESU5HIiwibnVtZXJvQXV0b3JpemFjaW9uIjoiIiwibnVtZXJvVHJhbnNhY2Npb24iOiI2Njk4MTg2MDIiLCJ1cmxiYW5jbyI6Imh0dHBzOi8vcmVnaXN0cm8ucHNlLmNvbS5jby9QU0VORi9pbmRleC5odG1sP2VuYz1kR3ZvdFB4VDFSb1ZsZFJBb0dGSGplbFJ6d3p5eUVZS1o1QUVVclBEV1FnJTNkIiwicmVmZXJlbmNpYSI6bnVsbCwiZmVjaGFWZW5jaW1pZW50byI6bnVsbCwic2VyaWFsZmFjdHVyYWNpb24iOiIxNzc1MjEzMTcwMjEyIiwiaWRmYWN0dXJhIjoiMTc3NTIxMzE3MDIxMiIsImNvZGlnb3Rlcm1pbmFsIjoiIiwiY29kaWdvdW5pY28iOi","headers":"HTTP/1.1 200 OK\r\nDate: Sun, 20 Sep 2026 02:14:09 GMT\r\nServer: nginx\r\nContent-Type: application/json\r\nVary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers\r\nAccess-Control-Allow-Origin: https://gateway2.tucompra.com.co\r\nX-Content-Type-Options: nosniff\r\nX-XSS-Protection: 1;  mode=b"}
+[2026-09-20 04:14:09] [PASO FIN] OK | DATA: {"bank_link":"https://registro.pse.com.co/PSENF/index.html?enc=dGvotPxT1RoVldRAoGFHjelRzwzyyEYKZ5AEUrPDWQg%3d","email":"test2@test.com"}
+[2026-09-20 04:14:41] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"prueba@prueba.com"}
+[2026-09-20 04:14:41] [PASO 1] Cart OK | DATA: {"cart_id":"b3cafae6-def5-4433-99b1-a04d4a9cc1f9"}
+[2026-09-20 04:14:43] [PASO 2] Order intento 1 | DATA: {"code":200}
+[2026-09-20 04:14:43] [PASO 2] Order OK | DATA: {"url":"https://pay.dlocal.com/gmf-apm/payments-redirect/N-152a51f3-36a3-4173-acee-d03dba8f034b"}
+[2026-09-20 04:14:43] [PASO 3] dLocal OK | DATA: {"fields":9}
+[2026-09-20 04:14:44] [PASO 4] Hash OK | DATA: {"hash":"f55072d387c5c742aed9e8097dfa2994"}
+[2026-09-20 04:14:44] [PASO 5] Confirm OK
+[2026-09-20 04:14:45] [PASO 6] Config OK | DATA: {"serial":112768654}
+[2026-09-20 04:14:45] [PASO 7] Metodo actualizado
+[2026-09-20 04:14:47] [PASO 8] Completar | DATA: {"code":200,"url":"https://gateway2.tucompra.com.co/tc/app/config/completarTransaccion?hash=f55072d387c5c742aed9e8097dfa2994","body":"{\"status\":200,\"payload\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTI3Njg2NTQiLCJhdXRob3JpdGllcyI6WyJUQy1JTlRFR1JBQ0lPTiJdLCJyZXNwb25zZSI6eyJzZXJpYWxUdWNvbXByYSI6MTEyNzY4NjU0LCJlc3RhZG8iOiJQRU5ESU5HIiwibnVtZXJvQXV0b3JpemFjaW9uIjoiIiwibnVtZXJvVHJhbnNhY2Npb24iOiI2Njk4MTk2OTciLCJ1cmxiYW5jbyI6Imh0dHBzOi8vcmVnaXN0cm8ucHNlLmNvbS5jby9QU0VORi9pbmRleC5odG1sP2VuYz1kR3ZvdFB4VDFSb1ZsZFJBb0dGSGpmV0tPcFVqWXk4ajdIdnZUNWdKTFI0JTNkIiwicmVmZXJlbmNpYSI6bnVsbCwiZmVjaGFWZW5jaW1pZW50byI6bnVsbCwic2VyaWFsZmFjdHVyYWNpb24iOiIxNzc1MjEzMTcyMTk3IiwiaWRmYWN0dXJhIjoiMTc3NTIxMzE3MjE5NyIsImNvZGlnb3Rlcm1pbmFsIjoiIiwiY29kaWdvdW5pY28iOi","headers":"HTTP/1.1 200 OK\r\nDate: Sun, 20 Sep 2026 02:14:46 GMT\r\nServer: nginx\r\nContent-Type: application/json\r\nVary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers\r\nAccess-Control-Allow-Origin: https://gateway2.tucompra.com.co\r\nX-Content-Type-Options: nosniff\r\nX-XSS-Protection: 1;  mode=b"}
+[2026-09-20 04:14:47] [PASO FIN] OK | DATA: {"bank_link":"https://registro.pse.com.co/PSENF/index.html?enc=dGvotPxT1RoVldRAoGFHjfWKOpUjYy8j7HvvT5gJLR4%3d","email":"prueba@prueba.com"}
+[2026-09-20 04:17:10] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dm521741@gmail.com"}
+[2026-09-20 04:17:10] [PASO 1] Cart OK | DATA: {"cart_id":"295bda7f-1264-4276-a8de-5280da05390d"}
+[2026-09-20 04:17:11] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:17:11] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:17:11] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"jhoyos955@gmail.com"}
+[2026-09-20 04:17:11] [PASO 1] Cart OK | DATA: {"cart_id":"f902cd6c-51f6-4c4a-a596-cde422129b33"}
+[2026-09-20 04:17:11] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:17:11] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:17:11] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"yulizagarciagarcia@hotmail.com"}
+[2026-09-20 04:17:12] [PASO 1] Cart OK | DATA: {"cart_id":"a016e8a8-ba4e-4b1f-9ba9-59449abf6d46"}
+[2026-09-20 04:17:12] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:17:12] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:17:12] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"johnfranco8f@gmail.com"}
+[2026-09-20 04:17:12] [PASO 1] Cart OK | DATA: {"cart_id":"6a8cf59b-c197-4780-8a1c-3e416331f10b"}
+[2026-09-20 04:17:13] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:17:13] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:17:13] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dsantamariao@unicartagena.edu.co"}
+[2026-09-20 04:17:13] [PASO 1] Cart OK | DATA: {"cart_id":"00d9bae0-42a1-4fa2-aa1a-ef149bf2093e"}
+[2026-09-20 04:17:14] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:17:14] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:17:14] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"pm626700@gmail.com"}
+[2026-09-20 04:17:14] [PASO 1] Cart OK | DATA: {"cart_id":"f3a2d9c3-d702-4183-a718-43874af76548"}
+[2026-09-20 04:17:14] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:17:14] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:17:14] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"indumetalicashys@gmail.com"}
+[2026-09-20 04:17:15] [PASO 1] Cart OK | DATA: {"cart_id":"251e0b96-9248-4752-bddf-0877a9a9544b"}
+[2026-09-20 04:17:15] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:17:15] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:17:15] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"lipege57@gmail.com"}
+[2026-09-20 04:17:15] [PASO 1] Cart OK | DATA: {"cart_id":"b59fb620-7508-4626-ac94-2a66d3a80204"}
+[2026-09-20 04:17:17] [PASO 2] Order intento 1 | DATA: {"code":200}
+[2026-09-20 04:17:17] [PASO 2] Order OK | DATA: {"url":"https://pay.dlocal.com/gmf-apm/payments-redirect/N-49fff56c-3129-4156-ac92-d2e236d70c50"}
+[2026-09-20 04:17:17] [PASO 3] dLocal OK | DATA: {"fields":9}
+[2026-09-20 04:17:18] [PASO 4] Hash OK | DATA: {"hash":"dea7177fceb925020eed82f4a8212808"}
+[2026-09-20 04:17:18] [PASO 5] Confirm OK
+[2026-09-20 04:17:19] [PASO 6] Config OK | DATA: {"serial":112769014}
+[2026-09-20 04:17:19] [PASO 7] Metodo actualizado
+[2026-09-20 04:17:20] [PASO 8] Completar | DATA: {"code":200,"url":"https://gateway2.tucompra.com.co/tc/app/config/completarTransaccion?hash=dea7177fceb925020eed82f4a8212808","body":"{\"status\":200,\"payload\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTI3NjkwMTQiLCJhdXRob3JpdGllcyI6WyJUQy1JTlRFR1JBQ0lPTiJdLCJyZXNwb25zZSI6eyJzZXJpYWxUdWNvbXByYSI6MTEyNzY5MDE0LCJlc3RhZG8iOiJQRU5ESU5HIiwibnVtZXJvQXV0b3JpemFjaW9uIjoiIiwibnVtZXJvVHJhbnNhY2Npb24iOiI2Njk4MjQwODIiLCJ1cmxiYW5jbyI6Imh0dHBzOi8vcmVnaXN0cm8ucHNlLmNvbS5jby9QU0VORi9pbmRleC5odG1sP2VuYz00RjJ2WDJIRmhIemtGNnc2T05MWXdFZjg0N3Vvc3pXcVkwYzJiQzJGam1ZJTNkIiwicmVmZXJlbmNpYSI6bnVsbCwiZmVjaGFWZW5jaW1pZW50byI6bnVsbCwic2VyaWFsZmFjdHVyYWNpb24iOiIxNzc1MjEzMTgwNDgyIiwiaWRmYWN0dXJhIjoiMTc3NTIxMzE4MDQ4MiIsImNvZGlnb3Rlcm1pbmFsIjoiIiwiY29kaWdvdW5pY28iOi","headers":"HTTP/1.1 200 OK\r\nDate: Sun, 20 Sep 2026 02:17:20 GMT\r\nServer: nginx\r\nContent-Type: application/json\r\nVary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers\r\nAccess-Control-Allow-Origin: https://gateway2.tucompra.com.co\r\nX-Content-Type-Options: nosniff\r\nX-XSS-Protection: 1;  mode=b"}
+[2026-09-20 04:17:20] [PASO FIN] OK | DATA: {"bank_link":"https://registro.pse.com.co/PSENF/index.html?enc=4F2vX2HFhHzkF6w6ONLYwEf847uoszWqY0c2bC2FjmY%3d","email":"lipege57@gmail.com"}
+[2026-09-20 04:19:41] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"indumetalicashys@gmail.com"}
+[2026-09-20 04:19:41] [PASO 1] Cart OK | DATA: {"cart_id":"0369b7e2-e76a-4848-b1bc-040467cde9c4"}
+[2026-09-20 04:19:41] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:19:41] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:19:41] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"pm626700@gmail.com"}
+[2026-09-20 04:19:42] [PASO 1] Cart OK | DATA: {"cart_id":"33707086-af79-425f-ac3a-ccc3ada123f5"}
+[2026-09-20 04:19:42] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:19:42] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:19:42] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dsantamariao@unicartagena.edu.co"}
+[2026-09-20 04:19:42] [PASO 1] Cart OK | DATA: {"cart_id":"cf39a8db-41b4-407a-89eb-372a2f5d54ae"}
+[2026-09-20 04:19:43] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:19:43] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:19:43] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"johnfranco8f@gmail.com"}
+[2026-09-20 04:19:43] [PASO 1] Cart OK | DATA: {"cart_id":"d6298049-e52e-4789-87b2-b3625803bbe6"}
+[2026-09-20 04:19:43] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:19:43] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:19:43] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"yulizagarciagarcia@hotmail.com"}
+[2026-09-20 04:19:44] [PASO 1] Cart OK | DATA: {"cart_id":"b396216f-5bea-447b-94cd-debcf1b58281"}
+[2026-09-20 04:19:44] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:19:44] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:19:44] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"jhoyos955@gmail.com"}
+[2026-09-20 04:19:44] [PASO 1] Cart OK | DATA: {"cart_id":"c0144009-1f19-474d-9703-f6f4c0cf229c"}
+[2026-09-20 04:19:45] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:19:45] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:19:45] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dm521741@gmail.com"}
+[2026-09-20 04:19:45] [PASO 1] Cart OK | DATA: {"cart_id":"99ccd9cb-bb43-4ae8-a8f4-396f4bc6169f"}
+[2026-09-20 04:19:45] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:19:45] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:19:45] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"vestidorojo07@gmail.com"}
+[2026-09-20 04:19:46] [PASO 1] Cart OK | DATA: {"cart_id":"40f5f91c-ef0e-4150-bb0b-3536121428f4"}
+[2026-09-20 04:19:47] [PASO 2] Order intento 1 | DATA: {"code":200}
+[2026-09-20 04:19:47] [PASO 2] Order OK | DATA: {"url":"https://pay.dlocal.com/gmf-apm/payments-redirect/N-bc48ec83-b071-432e-996e-1a02452260fb"}
+[2026-09-20 04:19:47] [PASO 3] dLocal OK | DATA: {"fields":9}
+[2026-09-20 04:19:48] [PASO 4] Hash OK | DATA: {"hash":"3bbd33764b27b90413c9cc439a5a99ea"}
+[2026-09-20 04:19:48] [PASO 5] Confirm OK
+[2026-09-20 04:19:49] [PASO 6] Config OK | DATA: {"serial":112769218}
+[2026-09-20 04:19:49] [PASO 7] Metodo actualizado
+[2026-09-20 04:19:51] [PASO 8] Completar | DATA: {"code":200,"url":"https://gateway2.tucompra.com.co/tc/app/config/completarTransaccion?hash=3bbd33764b27b90413c9cc439a5a99ea","body":"{\"status\":200,\"payload\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTI3NjkyMTgiLCJhdXRob3JpdGllcyI6WyJUQy1JTlRFR1JBQ0lPTiJdLCJyZXNwb25zZSI6eyJzZXJpYWxUdWNvbXByYSI6MTEyNzY5MjE4LCJlc3RhZG8iOiJQRU5ESU5HIiwibnVtZXJvQXV0b3JpemFjaW9uIjoiIiwibnVtZXJvVHJhbnNhY2Npb24iOiI2Njk4Mjg0MDMiLCJ1cmxiYW5jbyI6Imh0dHBzOi8vcmVnaXN0cm8ucHNlLmNvbS5jby9QU0VORi9pbmRleC5odG1sP2VuYz00RjJ2WDJIRmhIemtGNnc2T05MWXdIMmdRR3I5WXJjbVFrM0E5bUxzYWZBJTNkIiwicmVmZXJlbmNpYSI6bnVsbCwiZmVjaGFWZW5jaW1pZW50byI6bnVsbCwic2VyaWFsZmFjdHVyYWNpb24iOiIxNzc1MjEzMTg4NDE1IiwiaWRmYWN0dXJhIjoiMTc3NTIxMzE4ODQxNSIsImNvZGlnb3Rlcm1pbmFsIjoiIiwiY29kaWdvdW5pY28iOi","headers":"HTTP/1.1 200 OK\r\nDate: Sun, 20 Sep 2026 02:19:50 GMT\r\nServer: nginx\r\nContent-Type: application/json\r\nVary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers\r\nAccess-Control-Allow-Origin: https://gateway2.tucompra.com.co\r\nX-Content-Type-Options: nosniff\r\nX-XSS-Protection: 1;  mode=b"}
+[2026-09-20 04:19:51] [PASO FIN] OK | DATA: {"bank_link":"https://registro.pse.com.co/PSENF/index.html?enc=4F2vX2HFhHzkF6w6ONLYwH2gQGr9YrcmQk3A9mLsafA%3d","email":"vestidorojo07@gmail.com"}
+[2026-09-20 04:21:25] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dm521741@gmail.com"}
+[2026-09-20 04:21:26] [PASO 1] Cart OK | DATA: {"cart_id":"942a9471-c27e-4038-a943-748c270778a2"}
+[2026-09-20 04:21:26] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:21:26] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:21:26] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"jhoyos955@gmail.com"}
+[2026-09-20 04:21:27] [PASO 1] Cart OK | DATA: {"cart_id":"9ab1bd92-b74c-48ef-9915-85f6f4dac905"}
+[2026-09-20 04:21:28] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:21:28] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:21:28] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"yulizagarciagarcia@hotmail.com"}
+[2026-09-20 04:21:28] [PASO 1] Cart OK | DATA: {"cart_id":"91dba65f-2e79-4e04-b4bf-2b03824b8bc2"}
+[2026-09-20 04:21:28] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:21:28] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:21:28] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"johnfranco8f@gmail.com"}
+[2026-09-20 04:21:29] [PASO 1] Cart OK | DATA: {"cart_id":"9935cd5b-50a9-4e76-b7bd-f57c3c15cce5"}
+[2026-09-20 04:21:29] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:21:29] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:21:29] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dsantamariao@unicartagena.edu.co"}
+[2026-09-20 04:21:29] [PASO 1] Cart OK | DATA: {"cart_id":"b824b4f0-80b8-47af-a11f-7fb8bf986418"}
+[2026-09-20 04:21:30] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:21:30] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:21:30] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"pm626700@gmail.com"}
+[2026-09-20 04:21:30] [PASO 1] Cart OK | DATA: {"cart_id":"cfda4313-9558-498a-b3bc-03fa03ad1c72"}
+[2026-09-20 04:21:30] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:21:30] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:21:30] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"indumetalicashys@gmail.com"}
+[2026-09-20 04:21:31] [PASO 1] Cart OK | DATA: {"cart_id":"86956f5a-f531-4946-98f3-e07893bf7497"}
+[2026-09-20 04:21:31] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:21:31] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:21:31] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"mi.ge.rodriguez@unillanos.edu.co"}
+[2026-09-20 04:21:31] [PASO 1] Cart OK | DATA: {"cart_id":"3a603a29-251c-47b7-ad3f-d9bbff5a3ebd"}
+[2026-09-20 04:21:33] [PASO 2] Order intento 1 | DATA: {"code":200}
+[2026-09-20 04:21:33] [PASO 2] Order OK | DATA: {"url":"https://pay.dlocal.com/gmf-apm/payments-redirect/N-247dfd33-70dd-4139-8010-39c787987879"}
+[2026-09-20 04:21:33] [PASO 3] dLocal OK | DATA: {"fields":9}
+[2026-09-20 04:21:34] [PASO 4] Hash OK | DATA: {"hash":"f1dcc55a3b73455cfcecfdad9d0bc7c2"}
+[2026-09-20 04:21:34] [PASO 5] Confirm OK
+[2026-09-20 04:21:35] [PASO 6] Config OK | DATA: {"serial":112769538}
+[2026-09-20 04:21:35] [PASO 7] Metodo actualizado
+[2026-09-20 04:21:37] [PASO 8] Completar | DATA: {"code":200,"url":"https://gateway2.tucompra.com.co/tc/app/config/completarTransaccion?hash=f1dcc55a3b73455cfcecfdad9d0bc7c2","body":"{\"status\":200,\"payload\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTI3Njk1MzgiLCJhdXRob3JpdGllcyI6WyJUQy1JTlRFR1JBQ0lPTiJdLCJyZXNwb25zZSI6eyJzZXJpYWxUdWNvbXByYSI6MTEyNzY5NTM4LCJlc3RhZG8iOiJQRU5ESU5HIiwibnVtZXJvQXV0b3JpemFjaW9uIjoiIiwibnVtZXJvVHJhbnNhY2Npb24iOiI2Njk4MzE0MTIiLCJ1cmxiYW5jbyI6Imh0dHBzOi8vcmVnaXN0cm8ucHNlLmNvbS5jby9QU0VORi9pbmRleC5odG1sP2VuYz1Ja24lMmZvcjA5NjBSR21VMTdXSFpTZGMzbndZMHBDamFwZmxpa2JtWHB4N3MlM2QiLCJyZWZlcmVuY2lhIjpudWxsLCJmZWNoYVZlbmNpbWllbnRvIjpudWxsLCJzZXJpYWxmYWN0dXJhY2lvbiI6IjE3NzUyMTMxOTM5MjkiLCJpZGZhY3R1cmEiOiIxNzc1MjEzMTkzOTI5IiwiY29kaWdvdGVybWluYWwiOiIiLCJjb2RpZ291bmljby","headers":"HTTP/1.1 200 OK\r\nDate: Sun, 20 Sep 2026 02:21:36 GMT\r\nServer: nginx\r\nContent-Type: application/json\r\nVary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers\r\nAccess-Control-Allow-Origin: https://gateway2.tucompra.com.co\r\nX-Content-Type-Options: nosniff\r\nX-XSS-Protection: 1;  mode=b"}
+[2026-09-20 04:21:37] [PASO FIN] OK | DATA: {"bank_link":"https://registro.pse.com.co/PSENF/index.html?enc=Ikn%2for0960RGmU17WHZSdc3nwY0pCjapflikbmXpx7s%3d","email":"mi.ge.rodriguez@unillanos.edu.co"}
+[2026-09-20 04:24:55] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"indumetalicashys@gmail.com"}
+[2026-09-20 04:24:55] [PASO 1] Cart OK | DATA: {"cart_id":"7746e2f0-b477-4bd2-9cee-fd15742ce49e"}
+[2026-09-20 04:24:56] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:24:56] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:24:56] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"pm626700@gmail.com"}
+[2026-09-20 04:24:56] [PASO 1] Cart OK | DATA: {"cart_id":"d04ca438-892b-4aef-8af0-157e58536493"}
+[2026-09-20 04:24:56] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:24:56] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:24:56] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dsantamariao@unicartagena.edu.co"}
+[2026-09-20 04:24:57] [PASO 1] Cart OK | DATA: {"cart_id":"707fd2ae-fc25-4958-bcb1-8c1a41d326bd"}
+[2026-09-20 04:24:57] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:24:57] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:24:57] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"johnfranco8f@gmail.com"}
+[2026-09-20 04:24:57] [PASO 1] Cart OK | DATA: {"cart_id":"afe0677a-a8b7-4edd-aa6e-785a47999b92"}
+[2026-09-20 04:24:58] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:24:58] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:24:58] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"yulizagarciagarcia@hotmail.com"}
+[2026-09-20 04:24:58] [PASO 1] Cart OK | DATA: {"cart_id":"229a5101-9c45-4e22-a00c-a0199acc124a"}
+[2026-09-20 04:24:58] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:24:58] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:24:58] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"jhoyos955@gmail.com"}
+[2026-09-20 04:24:59] [PASO 1] Cart OK | DATA: {"cart_id":"9e5a71a9-e1c5-476a-8573-3318ff87b721"}
+[2026-09-20 04:24:59] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:24:59] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:24:59] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dm521741@gmail.com"}
+[2026-09-20 04:24:59] [PASO 1] Cart OK | DATA: {"cart_id":"7702fdd3-a9be-403d-bfed-63a3cc236b51"}
+[2026-09-20 04:25:00] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:25:00] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:25:00] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"yilmer1002@hotmail.com"}
+[2026-09-20 04:25:00] [PASO 1] Cart OK | DATA: {"cart_id":"f9039e16-80fd-4883-8188-ffc310404ea0"}
+[2026-09-20 04:25:02] [PASO 2] Order intento 1 | DATA: {"code":200}
+[2026-09-20 04:25:02] [PASO 2] Order OK | DATA: {"url":"https://pay.dlocal.com/gmf-apm/payments-redirect/N-705fd685-ae62-42c9-bace-f35f888a05c9"}
+[2026-09-20 04:25:02] [PASO 3] dLocal OK | DATA: {"fields":9}
+[2026-09-20 04:25:03] [PASO 4] Hash OK | DATA: {"hash":"ff0d774dd94b66d968de6fd528757652"}
+[2026-09-20 04:25:03] [PASO 5] Confirm OK
+[2026-09-20 04:25:03] [PASO 6] Config OK | DATA: {"serial":112769796}
+[2026-09-20 04:25:04] [PASO 7] Metodo actualizado
+[2026-09-20 04:25:06] [PASO 8] Completar | DATA: {"code":200,"url":"https://gateway2.tucompra.com.co/tc/app/config/completarTransaccion?hash=ff0d774dd94b66d968de6fd528757652","body":"{\"status\":200,\"payload\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTI3Njk3OTYiLCJhdXRob3JpdGllcyI6WyJUQy1JTlRFR1JBQ0lPTiJdLCJyZXNwb25zZSI6eyJzZXJpYWxUdWNvbXByYSI6MTEyNzY5Nzk2LCJlc3RhZG8iOiJQRU5ESU5HIiwibnVtZXJvQXV0b3JpemFjaW9uIjoiIiwibnVtZXJvVHJhbnNhY2Npb24iOiI2Njk4MzcxNjkiLCJ1cmxiYW5jbyI6Imh0dHBzOi8vcmVnaXN0cm8ucHNlLmNvbS5jby9QU0VORi9pbmRleC5odG1sP2VuYz1Ja24lMmZvcjA5NjBSR21VMTdXSFpTZFMxRThzMlhCbzcyUjVaZEJJN1klMmZkYyUzZCIsInJlZmVyZW5jaWEiOm51bGwsImZlY2hhVmVuY2ltaWVudG8iOm51bGwsInNlcmlhbGZhY3R1cmFjaW9uIjoiMTc3NTIxMzIwNDc2MyIsImlkZmFjdHVyYSI6IjE3NzUyMTMyMDQ3NjMiLCJjb2RpZ290ZXJtaW5hbCI6IiIsImNvZGlnb3VuaW","headers":"HTTP/1.1 200 OK\r\nDate: Sun, 20 Sep 2026 02:25:06 GMT\r\nServer: nginx\r\nContent-Type: application/json\r\nVary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers\r\nAccess-Control-Allow-Origin: https://gateway2.tucompra.com.co\r\nX-Content-Type-Options: nosniff\r\nX-XSS-Protection: 1;  mode=b"}
+[2026-09-20 04:25:06] [PASO FIN] OK | DATA: {"bank_link":"https://registro.pse.com.co/PSENF/index.html?enc=Ikn%2for0960RGmU17WHZSdS1E8s2XBo72R5ZdBI7Y%2fdc%3d","email":"yilmer1002@hotmail.com"}
+[2026-09-20 04:39:21] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dm521741@gmail.com"}
+[2026-09-20 04:39:22] [PASO 1] Cart OK | DATA: {"cart_id":"376bb985-927c-4d84-b028-ae4ee782a6d0"}
+[2026-09-20 04:39:22] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:39:22] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:39:22] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"jhoyos955@gmail.com"}
+[2026-09-20 04:39:22] [PASO 1] Cart OK | DATA: {"cart_id":"3db12acf-5bba-4a10-ad02-e29217087dc0"}
+[2026-09-20 04:39:23] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:39:23] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:39:23] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"yulizagarciagarcia@hotmail.com"}
+[2026-09-20 04:39:23] [PASO 1] Cart OK | DATA: {"cart_id":"4f3117c6-7784-45d2-b4c3-091e9f1b53bf"}
+[2026-09-20 04:39:23] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:39:23] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:39:23] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"johnfranco8f@gmail.com"}
+[2026-09-20 04:39:24] [PASO 1] Cart OK | DATA: {"cart_id":"61078c04-5ba0-46d0-b5c0-f19bd5deb267"}
+[2026-09-20 04:39:24] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:39:24] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:39:24] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"dsantamariao@unicartagena.edu.co"}
+[2026-09-20 04:39:24] [PASO 1] Cart OK | DATA: {"cart_id":"e21f2f37-592d-47d5-941f-95248f6650ec"}
+[2026-09-20 04:39:25] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:39:25] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:39:25] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"pm626700@gmail.com"}
+[2026-09-20 04:39:25] [PASO 1] Cart OK | DATA: {"cart_id":"5087d120-84b3-4b28-a72c-5ab987c6b5e4"}
+[2026-09-20 04:39:26] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:39:26] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:39:26] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"indumetalicashys@gmail.com"}
+[2026-09-20 04:39:26] [PASO 1] Cart OK | DATA: {"cart_id":"6202190d-4e97-4b59-b733-830e1fa67a28"}
+[2026-09-20 04:39:26] [PASO 2] Order intento 1 | DATA: {"code":400}
+[2026-09-20 04:39:26] [PASO 2] ERROR Order | DATA: {"code":400,"raw":"{\n  \"error\" : \"commons_invalid_request\",\n  \"detail\" : {\n    \"httpStatus\" : \"400 BAD_REQUEST\",\n    \"detail\" : \"{\\\"error\\\":\\\"purchase_api_pending_limit_exceeded\\\",\\\"description\\\":\\\"Pending limit exceede"}
+[2026-09-20 04:39:26] [PASO INICIO] ========== NUEVO FLUJO ========== | DATA: {"email":"aucencia77@gmail.com"}
+[2026-09-20 04:39:27] [PASO 1] Cart OK | DATA: {"cart_id":"273ae6c5-6bdd-4d5c-bdfc-1813cd4c3b8a"}
+[2026-09-20 04:39:28] [PASO 2] Order intento 1 | DATA: {"code":200}
+[2026-09-20 04:39:28] [PASO 2] Order OK | DATA: {"url":"https://pay.dlocal.com/gmf-apm/payments-redirect/N-77fc8ed7-a835-4cf8-a1bc-ffac89cb8b14"}
+[2026-09-20 04:39:28] [PASO 3] dLocal OK | DATA: {"fields":9}
+[2026-09-20 04:39:29] [PASO 4] Hash OK | DATA: {"hash":"0c5f06fa3d1298230e32cb47311226ce"}
+[2026-09-20 04:39:29] [PASO 5] Confirm OK
+[2026-09-20 04:39:30] [PASO 6] Config OK | DATA: {"serial":112771416}
+[2026-09-20 04:39:31] [PASO 7] Metodo actualizado
+[2026-09-20 04:39:32] [PASO 8] Completar | DATA: {"code":200,"url":"https://gateway2.tucompra.com.co/tc/app/config/completarTransaccion?hash=0c5f06fa3d1298230e32cb47311226ce","body":"{\"status\":200,\"payload\":\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMTI3NzE0MTYiLCJhdXRob3JpdGllcyI6WyJUQy1JTlRFR1JBQ0lPTiJdLCJyZXNwb25zZSI6eyJzZXJpYWxUdWNvbXByYSI6MTEyNzcxNDE2LCJlc3RhZG8iOiJQRU5ESU5HIiwibnVtZXJvQXV0b3JpemFjaW9uIjoiIiwibnVtZXJvVHJhbnNhY2Npb24iOiI2Njk4NTk4NzMiLCJ1cmxiYW5jbyI6Imh0dHBzOi8vcmVnaXN0cm8ucHNlLmNvbS5jby9QU0VORi9pbmRleC5odG1sP2VuYz1QUFMlMmJVdVY1WjB4WlRtTUt1eEJPSFBlSCUyYnAyQmRjdUpwMDROdzZqSzFFdyUzZCIsInJlZmVyZW5jaWEiOm51bGwsImZlY2hhVmVuY2ltaWVudG8iOm51bGwsInNlcmlhbGZhY3R1cmFjaW9uIjoiMTc3NTIxMzI0ODkxMiIsImlkZmFjdHVyYSI6IjE3NzUyMTMyNDg5MTIiLCJjb2RpZ290ZXJtaW5hbCI6IiIsImNvZGlnb3VuaW","headers":"HTTP/1.1 200 OK\r\nDate: Sun, 20 Sep 2026 02:39:31 GMT\r\nServer: nginx\r\nContent-Type: application/json\r\nVary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers\r\nAccess-Control-Allow-Origin: https://gateway2.tucompra.com.co\r\nX-Content-Type-Options: nosniff\r\nX-XSS-Protection: 1;  mode=b"}
+[2026-09-20 04:39:32] [PASO FIN] OK | DATA: {"bank_link":"https://registro.pse.com.co/PSENF/index.html?enc=PPS%2bUuV5Z0xZTmMKuxBOHPeH%2bp2BdcuJp04Nw6jK1Ew%3d","email":"aucencia77@gmail.com"}
