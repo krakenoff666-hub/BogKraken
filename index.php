@@ -1,99 +1,15 @@
 <?php
-$currentUser = 'Operator';
-$isAdminOrMercho = true;
-
 require_once __DIR__ . '/flow.php';
 
-// Helper functions
-function loadUsers() {
-    $file = __DIR__ . '/users.json';
-    if (file_exists($file)) {
-        $json = json_decode(file_get_contents($file), true);
-        if (is_array($json)) return $json;
-    }
-    return [
-        'JowoChk2026'    => 'JowoColCHK',
-        'MerchoChk2026'  => 'MarchoColCHK',
-        'AdminKrakenOFF' => 'ByKrakenOFF2026',
-    ];
-}
-
-function saveUsers($users) {
-    $file = __DIR__ . '/users.json';
-    return file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), LOCK_EX);
-}
-
-function getActivityData() {
-    $file = __DIR__ . '/activity.json';
-    $data = ['heartbeats' => [], 'links' => []];
-    if (file_exists($file)) {
-        $json = json_decode(file_get_contents($file), true);
-        if (is_array($json)) $data = array_merge($data, $json);
-    }
-    return $data;
-}
-
-function saveActivityData($data) {
-    $file = __DIR__ . '/activity.json';
-    return file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), LOCK_EX);
-}
-
-function recordHeartbeat($username) {
-    $data = getActivityData();
-    $data['heartbeats'][$username] = time();
-    saveActivityData($data);
-}
-
-function recordLinkGenerated($username, $email, $link, $status, $timeSeconds) {
-    $data = getActivityData();
-    $data['heartbeats'][$username] = time();
-    if (!isset($data['links'])) $data['links'] = [];
-    array_unshift($data['links'], [
-        'user'       => $username,
-        'email'      => $email,
-        'link'       => $link,
-        'status'     => $status,
-        'time_sec'   => $timeSeconds,
-        'timestamp'  => time(),
-        'date_str'   => date('d/m/Y H:i:s'),
-    ]);
-    if (count($data['links']) > 150) {
-        $data['links'] = array_slice($data['links'], 0, 150);
-    }
-    saveActivityData($data);
-}
-
-function tiempoRelativo($timestamp) {
-    $diff = time() - $timestamp;
-    if ($diff < 5) return 'Justo ahora';
-    if ($diff < 60) return "Hace $diff seg";
-    $mins = floor($diff / 60);
-    if ($mins < 60) return "Hace $mins min" . ($mins > 1 ? 's' : '');
-    $hours = floor($mins / 60);
-    if ($hours < 24) return "Hace $hours hora" . ($hours > 1 ? 's' : '');
-    $days = floor($hours / 24);
-    return "Hace $days día" . ($days > 1 ? 's' : '');
-}
-
-recordHeartbeat($currentUser);
-
 // AJAX Endpoints
-if (isset($_POST['heartbeat'])) {
-    header('Content-Type: application/json');
-    recordHeartbeat($currentUser);
-    echo json_encode(['ok' => true]);
-    exit;
-}
-
 if (isset($_POST['api']) && isset($_POST['email'])) {
     header('Content-Type: application/json');
     $email = trim($_POST['email']);
+    $bancoCodigo = trim($_POST['banco_codigo'] ?? '1051');
+    $bancoNombre = trim($_POST['banco_nombre'] ?? 'BANCO DAVIVIENDA');
     $t0 = microtime(true);
-    $res = flujoCompleto($email);
+    $res = flujoCompleto($email, $bancoCodigo, $bancoNombre);
     $elapsed = round(microtime(true) - $t0, 1);
-    if (($res['status'] ?? '') === 'ok' && !empty($res['bank_link'])) {
-        recordLinkGenerated($currentUser, $email, $res['bank_link'], 'ok', $elapsed);
-    }
     echo json_encode($res, JSON_UNESCAPED_SLASHES);
     exit;
 }
@@ -765,6 +681,110 @@ $EMAILS = cargarCorreos();
             transform:translateY(-1px);
         }
 
+        /* Generated links list */
+        .links-list{
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            max-height:340px;
+            overflow-y:auto;
+            padding-right:4px;
+        }
+        .links-list::-webkit-scrollbar{width:8px}
+        .links-list::-webkit-scrollbar-track{background:rgba(255,255,255,0.05);border-radius:8px}
+        .links-list::-webkit-scrollbar-thumb{background:#7f1d1d;border-radius:8px}
+        .links-list::-webkit-scrollbar-thumb:hover{background:#dc2626}
+        .link-item{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            background:rgba(6, 10, 19, 0.9);
+            border:1px solid rgba(255, 255, 255, 0.1);
+            border-radius:14px;
+            padding:10px 12px;
+            transition:all .2s;
+        }
+        .link-item.used{
+            border-color:rgba(100, 116, 139, 0.35);
+            opacity:0.55;
+            filter:grayscale(0.6);
+        }
+        .link-item-num{
+            width:26px;
+            height:26px;
+            min-width:26px;
+            border-radius:8px;
+            background:rgba(220, 38, 38, 0.15);
+            border:1px solid rgba(220, 38, 38, 0.4);
+            color:#ef4444;
+            font-weight:900;
+            font-size:12px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-family:'JetBrains Mono', monospace;
+        }
+        .link-item-text{
+            flex:1;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            color:#ef4444;
+            font-family:'JetBrains Mono', monospace;
+            font-size:11.5px;
+            font-weight:600;
+            cursor:pointer;
+        }
+        .link-item-actions{
+            display:flex;
+            gap:6px;
+            min-width:0;
+        }
+        .link-item-btn{
+            border:none;
+            border-radius:9px;
+            padding:8px 12px;
+            font-size:11.5px;
+            font-weight:800;
+            cursor:pointer;
+            text-decoration:none;
+            display:inline-flex;
+            align-items:center;
+            gap:4px;
+            transition:all .15s;
+            font-family:'Plus Jakarta Sans', sans-serif;
+            white-space:nowrap;
+        }
+        .link-item-btn.copy{
+            background:rgba(255, 255, 255, 0.08);
+            color:#f1f5f9;
+            border:1px solid rgba(255, 255, 255, 0.15);
+        }
+        .link-item-btn.copy:hover{background:rgba(255, 255, 255, 0.18)}
+        .link-item-btn.open{
+            background:linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color:#fff;
+            box-shadow:0 4px 14px rgba(220, 38, 38, 0.35);
+        }
+        .link-item-btn.open:hover{background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%)}
+        .link-item-btn.disabled{
+            background:rgba(100, 116, 139, 0.25);
+            color:#94a3b8;
+            box-shadow:none;
+            cursor:not-allowed;
+            border:1px solid rgba(100, 116, 139, 0.4);
+        }
+        .link-item-badge{
+            border-radius:8px;
+            padding:2px 8px;
+            font-size:9.5px;
+            font-weight:900;
+            letter-spacing:0.5px;
+            white-space:nowrap;
+        }
+        .link-item-badge.ok{background:rgba(220, 38, 38, 0.18);color:#ef4444;border:1px solid rgba(220,38,38,0.35)}
+        .link-item-badge.used-b{background:rgba(100, 116, 139, 0.25);color:#94a3b8;border:1px solid rgba(100,116,139,0.4)}
+
         /* Modals */
         .modal-overlay{
             position:fixed;
@@ -1147,19 +1167,13 @@ $EMAILS = cargarCorreos();
         <div class="progress-bar-fill"></div>
     </div>
 
-    <!-- Generated Link Result Card (Directly Below Main Button) -->
+    <!-- Generated Links List Card -->
     <div class="link-result-card" id="linkResultCard">
         <div class="link-result-head">
-            <span class="link-badge-ok">LINK GENERADO CON EXITO</span>
-            <span class="link-time-info" id="linkTimeInfo">en 0.0s</span>
+            <span class="link-badge-ok" id="linkResultTitle">LINKS GENERADOS</span>
+            <span class="link-time-info" id="linkTimeInfo">0/0</span>
         </div>
-        <div class="link-input-group">
-            <input type="text" id="linkInput" readonly placeholder="https://registro.pse.com.co/..." onclick="this.select()">
-            <button class="btn-action-copy ripple-btn" onclick="copiarLinkGenerado()">Copiar Link</button>
-        </div>
-        <div style="display:flex;gap:8px;">
-            <a href="#" id="linkOpenBtn" target="_blank" class="btn-action-open ripple-btn">Abrir Banco / PSE</a>
-        </div>
+        <div id="linksList" class="links-list"></div>
     </div>
 </div>
 
@@ -1428,16 +1442,20 @@ document.querySelectorAll('.ripple-btn').forEach(btn=>{
 
 // Core Race State & Logic
 const BLOCK_TIME = 1200000;
-let emails = <?=json_encode($EMAILS)?>, blocked = [], running = false, totalOk = 0, totalFail = 0, raceNum = 0;
+let emails = <?=json_encode($EMAILS)?>, blocked = [], running = false, totalOk = 0, totalFail = 0, raceNum = 0, rlStreak = 0;
+let generatedLinks = [], usedLinks = new Set();
 try{
     const s = JSON.parse(localStorage.getItem('bx_race') || '{}');
     if(s.emails) emails = s.emails;
     if(s.blocked) blocked = s.blocked;
+    if(s.used) usedLinks = new Set(s.used);
     <?=json_encode($EMAILS)?>.forEach(e=>{ if(!emails.includes(e) && !blocked.some(b=>b.e===e)) emails.push(e); });
 }catch(x){}
-const save = () => localStorage.setItem('bx_race', JSON.stringify({emails, blocked}));
+const save = () => localStorage.setItem('bx_race', JSON.stringify({emails, blocked, used: [...usedLinks]}));
 const btn = document.getElementById('btnMain'), pBar = document.getElementById('progressBar');
-const linkCard = document.getElementById('linkResultCard'), linkInput = document.getElementById('linkInput'), linkOpenBtn = document.getElementById('linkOpenBtn'), linkTimeInfo = document.getElementById('linkTimeInfo');
+const linkCard = document.getElementById('linkResultCard'), linkTimeInfo = document.getElementById('linkTimeInfo'), linksList = document.getElementById('linksList');
+
+const BANCO_FIJO = 'DAVIVIENDA';
 
 const unblock = () => {
     const n = Date.now();
@@ -1450,6 +1468,43 @@ const unblock = () => {
     });
     save();
 };
+
+function renderLinksList(){
+    if(!generatedLinks.length){ linkCard.classList.remove('show'); return; }
+    linkCard.classList.add('show');
+    linkTimeInfo.textContent = `${generatedLinks.filter(l=>l.used).length}/${generatedLinks.length} usados`;
+    linksList.innerHTML = generatedLinks.map((l, i)=>{
+        const used = usedLinks.has(l.link);
+        return `<div class="link-item ${used?'used':''}">
+            <div class="link-item-num">${i+1}</div>
+            <div class="link-item-text" title="${l.link}" onclick="copyLink('${l.link}')">${l.link}</div>
+            <div class="link-item-actions">
+                <span class="link-item-badge ${used?'used-b':'ok'}">${used?'USADO':'OK'}</span>
+                <button class="link-item-btn copy" onclick="copyLink('${l.link}')">Copiar</button>
+                ${used
+                    ? `<button class="link-item-btn disabled" disabled>Usado</button>`
+                    : `<button class="link-item-btn open" onclick="openLink('${l.link}')">Abrir</button>`}
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function copyLink(link){
+    navigator.clipboard.writeText(link);
+    showToast('Link copiado', 'OK');
+}
+
+function openLink(link){
+    if(usedLinks.has(link)){
+        showToast('Este link ya fue usado', '!!');
+        return;
+    }
+    usedLinks.add(link);
+    save();
+    renderLinksList();
+    window.open(link, '_blank');
+    showToast('Link abierto y marcado como usado', 'OK');
+}
 
 window.addEventListener('pageshow', ()=>{
     running = false;
@@ -1519,16 +1574,6 @@ async function subirArchivoCorreos(input){
 
 renderEmails();
 
-function copiarLinkGenerado(){
-    if(!linkInput.value) return;
-    navigator.clipboard.writeText(linkInput.value);
-    const btnCopy = document.querySelector('.btn-action-copy');
-    const originalText = btnCopy.textContent;
-    btnCopy.textContent = 'Copiado!';
-    showToast('Enlace copiado al portapapeles', 'OK');
-    setTimeout(()=>{ btnCopy.textContent = originalText; }, 2000);
-}
-
 function copiarTextoDirecto(text, btnElement){
     navigator.clipboard.writeText(text);
     const orig = btnElement.textContent;
@@ -1547,46 +1592,42 @@ function iniciarProcesoConEfectos(e){
 
 async function lanzarRace(){
     unblock();
-    const c = 8;
+    const target = 1;
+    if(generatedLinks.length >= target){
+        running = false; btn.disabled = false; btn.textContent = 'GENERAR LINK'; pBar.classList.remove('active');
+        showToast('Links generados', 'OK');
+        return;
+    }
+    let c = 3;
+    if(rlStreak > 0) c = Math.max(1, 3 - rlStreak);
+    if(emails.length < c) c = emails.length;
     const batch = []; for(let i = 0; i < c && emails.length > 0; i++) batch.push(emails.shift()); save();
     if(!batch.length){
         if(blocked.length){
             btn.textContent = 'GENERANDO LINK...';
-            setTimeout(()=>{ if(running) lanzarRace(); }, 5000);
+            const waitBlock = Math.min(5000 * (rlStreak + 1), 30000);
+            setTimeout(()=>{ if(running) lanzarRace(); }, waitBlock);
             return;
         }
         running = false; btn.disabled = false; btn.textContent = 'GENERAR LINK'; pBar.classList.remove('active');
         return;
     }
-    raceNum++; pBar.classList.add('active'); btn.textContent = 'GENERANDO LINK...';
-    const ctrl = new AbortController(), sig = ctrl.signal; let won = false; const t0 = Date.now();
+    raceNum++; pBar.classList.add('active'); btn.textContent = `GENERANDO LINK... (${generatedLinks.length}/${target})`;
+    const ctrl = new AbortController(), sig = ctrl.signal; const t0 = Date.now();
     const proms = batch.map((email, idx)=>{
         const fd = new FormData(); fd.append('api', '1'); fd.append('email', email);
+        fd.append('banco_codigo', '1051');
+        fd.append('banco_nombre', 'BANCO DAVIVIENDA');
         return fetch('index.php', { method: 'POST', body: fd, signal: sig }).then(r=>r.json()).then(d=>{
-            if(won) return null;
-            const el = ((Date.now() - t0) / 1000).toFixed(1);
+            if(generatedLinks.length >= target){ ctrl.abort(); return null; }
             if(d.status === 'ok' && d.bank_link){
-                won = true; totalOk++;
-                batch.forEach((e, i)=>{ if(i !== idx && !emails.includes(e)) emails.unshift(e); }); save();
-                ctrl.abort();
-                
-                btn.textContent = 'LINK GENERADO';
-                btn.disabled = false;
-                pBar.classList.remove('active');
-                
-                // Show Generated Link Result Card
-                linkOpenBtn.href = d.bank_link;
-                linkTimeInfo.textContent = `en ${el}s`;
-                linkCard.classList.add('show');
-                
-                // Matrix Decrypt Animation
-                decryptTextAnimation(linkInput, d.bank_link);
-                
-                // Celebration Sparks
-                const rect = linkCard.getBoundingClientRect();
-                triggerNeonSparks(rect.left + rect.width / 2, rect.top + 30);
-                showToast('Link generado con exito!', 'OK');
-                
+                totalOk++;
+                generatedLinks.push({link: d.bank_link});
+                renderLinksList();
+                btn.textContent = `LINK ${generatedLinks.length}/${target}`;
+                triggerNeonSparks(linkCard.getBoundingClientRect().left + linkCard.getBoundingClientRect().width / 2, linkCard.getBoundingClientRect().top + 30);
+                showToast(`Link ${generatedLinks.length} generado con exito!`, 'OK');
+                if(generatedLinks.length >= target) ctrl.abort();
                 return {won: true};
             }else if(d.status === 'rate_limit'){
                 if(!emails.includes(email)) emails.unshift(email); save(); return {won: false, rl: true};
@@ -1599,11 +1640,18 @@ async function lanzarRace(){
         });
     });
     const res = await Promise.allSettled(proms);
-    if(won){ running = false; return; }
+    if(generatedLinks.length >= target){
+        running = false; btn.disabled = false; btn.textContent = 'GENERAR LINK'; pBar.classList.remove('active');
+        showToast('Links generados', 'OK');
+        return;
+    }
     if(res.some(r=>r.status === 'fulfilled' && r.value && r.value.rl)){
-        btn.textContent = 'GENERANDO LINK...';
-        await new Promise(r=>setTimeout(r, 5000));
+        rlStreak++;
+        const wait = Math.min(3000 * Math.pow(2, rlStreak - 1), 30000);
+        btn.textContent = `ESPERANDO SATURACION... ${Math.round(wait/1000)}s`;
+        await new Promise(r=>setTimeout(r, wait));
     } else {
+        rlStreak = 0;
         await new Promise(r=>setTimeout(r, 100));
     }
     if(running) lanzarRace();
@@ -1616,8 +1664,11 @@ function iniciarProceso(){
         showToast('Agrega correos primero', '!!');
         return;
     }
+    const target = 1;
+    generatedLinks = [];
+    rlStreak = 0;
     linkCard.classList.remove('show');
-    running = true; btn.disabled = true; btn.textContent = 'GENERANDO LINK...'; pBar.classList.add('active'); lanzarRace();
+    running = true; btn.disabled = true; btn.textContent = 'GENERANDO... 0/1'; pBar.classList.add('active'); lanzarRace();
 }
 
 // Modal Controllers

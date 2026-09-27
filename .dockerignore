@@ -1,0 +1,5 @@
+.git
+.gitignore
+debug.log
+keys.local.php
+**/.DS_Store

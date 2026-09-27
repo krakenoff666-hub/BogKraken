@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: krakenbog
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: BONOXS_SK
+        sync: false
+      - key: BONOXS_AK
+        sync: false

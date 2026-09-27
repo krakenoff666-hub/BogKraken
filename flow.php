@@ -3,8 +3,17 @@
 //  flow.php - Flujo BonoXS (Web)
 // ============================================================
 
-$SK = 'c1ac9381fee418a87fbd02fbd8d88fa1';
-$AK = '0a30e9fb6d19d3f9c7739862feba5168';
+$SK = getenv('BONOXS_SK');
+$AK = getenv('BONOXS_AK');
+$_keysFile = __DIR__ . '/keys.local.php';
+if ((!$SK || !$AK) && file_exists($_keysFile)) {
+    $__k = require $_keysFile;
+    if (is_array($__k)) {
+        $SK = $SK ?: ($__k['SK'] ?? '');
+        $AK = $AK ?: ($__k['AK'] ?? '');
+    }
+}
+unset($_keysFile, $__k);
 $API = 'https://api.bonoxs.com';
 $TC  = 'https://gateway2.tucompra.com.co';
 
@@ -34,11 +43,40 @@ function flushDebugLog() {
     global $debugBuffer;
     if (!empty($debugBuffer)) {
         $logFile = __DIR__ . '/debug.log';
-        @file_put_contents($logFile, implode('', $debugBuffer), FILE_APPEND | LOCK_EX);
+        $existing = '';
+        if (file_exists($logFile)) {
+            $existing = @file_get_contents($logFile);
+            $lines = preg_split('/\R/', $existing);
+            if (count($lines) > 500) {
+                $lines = array_slice($lines, count($lines) - 500);
+            }
+            $existing = implode("\n", $lines);
+            if ($existing !== '') $existing .= "\n";
+        }
+        @file_put_contents($logFile, $existing . implode('', $debugBuffer), FILE_APPEND | LOCK_EX);
         $debugBuffer = [];
     }
 }
 register_shutdown_function('flushDebugLog');
+
+function poolGet($host) {
+    global $_curlPool;
+    if (!is_array($_curlPool)) $_curlPool = [];
+    if (empty($_curlPool[$host])) {
+        $_curlPool[$host] = curl_init();
+    }
+    return $_curlPool[$host];
+}
+function poolCloseAll() {
+    global $_curlPool;
+    if (is_array($_curlPool)) {
+        foreach ($_curlPool as $ch) {
+            if (is_resource($ch)) curl_close($ch);
+        }
+        $_curlPool = [];
+    }
+}
+register_shutdown_function('poolCloseAll');
 
 function bonoxsApi($url, $body = null, $extra = []) {
     global $AK, $SK;
@@ -54,7 +92,7 @@ function bonoxsApi($url, $body = null, $extra = []) {
     if ($body) $h[] = 'Signature: ' . sign($body, $SK);
     foreach ($extra as $e) $h[] = $e;
 
-    $ch = curl_init();
+    $ch = poolGet('bonoxs');
     $opts = [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT => 5,
@@ -70,6 +108,8 @@ function bonoxsApi($url, $body = null, $extra = []) {
         CURLOPT_BUFFERSIZE => 16384,
         CURLOPT_URL => $url,
         CURLOPT_HTTPHEADER => $h,
+        CURLOPT_HEADER => false,
+        CURLOPT_FOLLOWLOCATION => false,
     ];
     if (defined('CURL_HTTP_VERSION_2TLS')) {
         $opts[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_2TLS;
@@ -85,7 +125,6 @@ function bonoxsApi($url, $body = null, $extra = []) {
     }
     $r = curl_exec($ch);
     $c = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
     return ['code' => $c, 'data' => json_decode($r, true), 'raw' => $r];
 }
 
@@ -97,7 +136,7 @@ function tcApi($url, $body = null, $method = 'GET') {
         'Referer: https://gateway2.tucompra.com.co/tc/pagos/v1/compra',
         'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
     ];
-    $ch = curl_init();
+    $ch = poolGet('tc');
     $opts = [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT => 5,
@@ -130,17 +169,15 @@ function tcApi($url, $body = null, $method = 'GET') {
     }
     $response = curl_exec($ch);
     $hs = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-    $result = [
+    return [
         'code'    => curl_getinfo($ch, CURLINFO_HTTP_CODE),
-        'body'    => substr($response, $hs),
+        'body'    => $hs > 0 && strlen($response) >= $hs ? substr($response, $hs) : $response,
         'url'     => curl_getinfo($ch, CURLINFO_EFFECTIVE_URL),
-        'headers' => substr($response, 0, $hs),
+        'headers' => $hs > 0 ? substr($response, 0, $hs) : '',
     ];
-    curl_close($ch);
-    return $result;
 }
 
-function flujoCompleto($email) {
+function flujoCompleto($email, $bancoCodigo = '1051', $bancoNombre = 'BANCO DAVIVIENDA') {
     global $API, $TC, $nombres, $apellidos;
 
     debugLog('INICIO', "========== NUEVO FLUJO ==========", ['email' => $email]);
@@ -185,8 +222,10 @@ function flujoCompleto($email) {
 
     if ($res['code'] !== 200) {
         debugLog(2, "ERROR Order", ['code' => $res['code'], 'raw' => substr($res['raw'],0,200)]);
-        $blocked = (strpos($res['raw'], 'pending_limit') !== false);
-        return ['status' => $blocked ? 'blocked' : 'error', 'error' => 'Order '.$res['code']];
+        if (strpos($res['raw'], 'pending_limit') !== false) {
+            return ['status' => 'rate_limit', 'wait' => 10];
+        }
+        return ['status' => 'blocked', 'error' => 'Order '.$res['code']];
     }
     $dlocalUrl = $res['data']['redirect_url'] ?? '';
     if (!$dlocalUrl) {
@@ -306,12 +345,12 @@ function flujoCompleto($email) {
         'metodoPago'=>3,'valorBase'=>0,'valorIva'=>0,'celularComprador'=>'+57'.$celular,
         'direccionComprador'=>$direccion,'campoExtra1'=>$fields['campoExtra1']??'',
         'valorAdicional'=>0,'tokenTransaccion'=>$token,
-        'camposMetodoPago'=>['campo1'=>'1001','campo2'=>'BANCO DE BOGOTA','campo3'=>'0','campo4'=>'Persona Natural'],
+        'camposMetodoPago'=>['campo1'=>$bancoCodigo,'campo2'=>$bancoNombre,'campo3'=>'0','campo4'=>'Persona Natural'],
         'finger'=>$finger,'politicas'=>true,'codigoPais'=>'co',
     ];
     $completar = tcApi("$TC/tc/app/config/completarTransaccion?hash=$hash", json_encode($trans), 'POST');
     $completarData = json_decode($completar['body'], true);
-    debugLog(8, "Completar", ['code'=>$completar['code'],'url'=>$completar['url'],'body'=>substr($completar['body'],0,600),'headers'=>substr($completar['headers'],0,300)]);
+    debugLog(8, "Completar", ['code'=>$completar['code'],'url'=>$completar['url']]);
 
     $bankUrl = null;
 
